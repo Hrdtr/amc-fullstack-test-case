@@ -71,7 +71,7 @@
           dark:text-gray-300
           prose
           whitespace-pre-line
-          select-auto
+          select-text
         "
       >
         {{ description }}

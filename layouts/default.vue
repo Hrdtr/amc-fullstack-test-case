@@ -136,7 +136,7 @@ export default {
 
 <style lang="postcss">
 * {
-  @apply antialiased transition-all select-none;
+  @apply antialiased transition-all;
 }
 .page-enter-active,
 .page-leave-active {
@@ -148,7 +148,7 @@ export default {
   opacity: 0;
 }
 .layout {
-  @apply bg-white dark:bg-black text-gray-800 dark:text-gray-200;
+  @apply bg-white dark:bg-black text-gray-800 dark:text-gray-200 select-none;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
 }

@@ -134,7 +134,7 @@
         </div>
 
         <div
-          class="px-4 py-20 mx-auto prose select-auto"
+          class="px-4 py-20 mx-auto prose select-text"
           v-html="post.content"
         />
       </article>
