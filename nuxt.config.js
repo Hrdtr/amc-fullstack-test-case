@@ -5,7 +5,6 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -42,7 +41,20 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      name: 'AM Collective Test Case - Herdi Tr.',
+      short_name: 'AMC Test Case',
+      description:
+        "Herdi Tr's test case assignment for full-stack job recruitment",
+      lang: 'en',
+      useWebmanifestExtension: false
+    },
+    meta: {
+      name: 'ArisaAM Collective Test Case - Herdi Tr.nAja',
+      author: 'Herdi Tr.',
+      description:
+        "Herdi Tr's test case assignment for full-stack job recruitment",
+      appleStatusBarStyle: 'black-translucent',
+      nativeUI: true
     }
   },
 
