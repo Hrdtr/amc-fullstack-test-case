@@ -181,32 +181,40 @@ export default {
     async getData(page) {
       this.loading = true
 
-      const pageToken = page
-        ? page === 'next'
-          ? this.nextPageToken
-          : this.prevPageToken
-        : ''
-      const res = await this.$axios.get(
-        `https://www.googleapis.com/youtube/v3/search?key=AIzaSyDHvGH_8_TLf8l-hKP1kgGmg-4bXpuPUC8&channelId=${
-          this.$sources('yt')[0]
-        }&part=snippet,id&order=date&maxResults=9&pageToken=${pageToken}`
-      )
+      try {
+        const pageToken = page
+          ? page === 'next'
+            ? this.nextPageToken
+            : this.prevPageToken
+          : ''
+        const res = await this.$axios.get(
+          `https://www.googleapis.com/youtube/v3/search?key=AIzaSyDHvGH_8_TLf8l-hKP1kgGmg-4bXpuPUC8&channelId=${
+            this.$sources('yt')[0]
+          }&part=snippet,id&order=date&maxResults=9&pageToken=${pageToken}`
+        )
 
-      const videos = res.data.items.map((item) => {
-        return {
-          id: item.id.videoId,
-          title: item.snippet.title,
-          img: item.snippet.thumbnails.medium.url,
-          publishedAt: new Date(item.snippet.publishedAt).toLocaleDateString(),
-          channel: item.snippet.channelTitle,
-          description: item.snippet.description
-        }
-      })
+        const videos = res.data.items.map((item) => {
+          return {
+            id: item.id.videoId,
+            title: item.snippet.title,
+            img: item.snippet.thumbnails.medium.url,
+            publishedAt: new Date(
+              item.snippet.publishedAt
+            ).toLocaleDateString(),
+            channel: item.snippet.channelTitle,
+            description: item.snippet.description
+          }
+        })
 
-      this.videos = videos
-      this.nextPageToken = res.data.nextPageToken || ''
-      this.prevPageToken = res.data.prevPageToken || ''
-      this.loading = false
+        this.videos = videos
+        this.nextPageToken = res.data.nextPageToken || ''
+        this.prevPageToken = res.data.prevPageToken || ''
+        this.loading = false
+      } catch (error) {
+        alert(error.response.data.error.message)
+        // eslint-disable-next-line no-console
+        console.log(error)
+      }
     }
   }
 }
