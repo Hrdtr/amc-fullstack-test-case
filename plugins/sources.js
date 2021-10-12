@@ -6,7 +6,7 @@ export default ({ app }, inject) => {
         return [
           'https://lemon-film.com',
           'https://alvinology.com',
-          'http://sethlui.com'
+          'https://sethlui.com'
         ]
       case 'yt':
         return ['UCpiCK8c6PBktcxq7Az_t4RQ']
