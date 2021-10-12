@@ -136,7 +136,7 @@ export default {
 
 <style lang="postcss">
 * {
-  @apply antialiased transition-all;
+  @apply antialiased transition-all select-none;
 }
 .page-enter-active,
 .page-leave-active {

@@ -201,8 +201,7 @@ export default {
             publishedAt: new Date(
               item.snippet.publishedAt
             ).toLocaleDateString(),
-            channel: item.snippet.channelTitle,
-            description: item.snippet.description
+            channel: item.snippet.channelTitle
           }
         })
 

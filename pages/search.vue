@@ -83,9 +83,7 @@
               "
             >
               <NuxtLink
-                :to="`/read/${
-                  post.source === 'Alvinology' ? 'alvinology' : 'lemon-film'
-                }/${post._embedded.self[0].slug}`"
+                :to="`/read/${post.source}/${post._embedded.self[0].slug}`"
                 class="hover:text-gray-900 dark:hover:text-gray-100"
                 v-html="post._embedded.self[0].title.rendered"
               ></NuxtLink>
@@ -121,9 +119,7 @@
             />
             <NuxtLink
               v-else
-              :to="`/read/${
-                post.source === 'Alvinology' ? 'alvinology' : 'lemon-film'
-              }/${post._embedded.self[0].slug}`"
+              :to="`/read/${post.source}/${post._embedded.self[0].slug}`"
               class="
                 px-4
                 py-2
@@ -205,24 +201,34 @@ export default {
       const res2 = await $axios.get(
         `https://alvinology.com/wp-json/wp/v2/search?search=${route.query.keyword}&per_page=3&page=1&type=post&_embed=self`
       )
+      const res3 = await $axios.get(
+        `https://sethlui.com/wp-json/wp/v2/search?search=${route.query.keyword}&per_page=3&page=1&type=post&_embed=self`
+      )
       return {
         posts: [
           ...res1.data.map((d) => {
             return {
               ...d,
-              source: 'Lemon Film'
+              source: 'lemon-film.com'
             }
           }),
           ...res2.data.map((d) => {
             return {
               ...d,
-              source: 'Alvinology'
+              source: 'alvinology.com'
+            }
+          }),
+          ...res2.data.map((d) => {
+            return {
+              ...d,
+              source: 'sethlui.com'
             }
           })
         ],
         totalPages: Math.max(
           res1.headers['x-wp-totalpages'],
-          res2.headers['x-wp-totalpages']
+          res2.headers['x-wp-totalpages'],
+          res3.headers['x-wp-totalpages']
         )
       }
     } catch (error) {

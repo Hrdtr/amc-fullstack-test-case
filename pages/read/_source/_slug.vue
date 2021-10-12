@@ -52,10 +52,9 @@
                 md:leading-tight md:text-4xl
               "
               itemprop="headline"
-              title="Rise of Tailwind - A Utility First CSS Framework"
             />
             <div>
-              <p
+              <div
                 class="
                   animate-pulse
                   rounded
@@ -68,12 +67,12 @@
                   text-gray-600
                   dark:text-gray-400
                 "
-              ></p>
+              ></div>
             </div>
           </div>
         </div>
 
-        <div class="flex-1 flex px-5 md:px-4 my-20">
+        <div class="flex-1 flex justify-center px-5 md:px-4 my-20">
           <div
             class="
               flex-1
@@ -134,7 +133,10 @@
           </div>
         </div>
 
-        <div class="px-4 py-20 mx-auto prose" v-html="post.content" />
+        <div
+          class="px-4 py-20 mx-auto prose select-auto"
+          v-html="post.content"
+        />
       </article>
     </template>
   </section>
@@ -159,12 +161,7 @@ export default {
         )
 
         const featuredMedia =
-          res.data[0]._embedded['wp:featuredmedia'][0].media_details &&
-          res.data[0]._embedded['wp:featuredmedia'][0].media_details.sizes
-            .thumbnail
-            ? res.data[0]._embedded['wp:featuredmedia'][0].media_details.sizes
-                .thumbnail.source_url
-            : res.data[0]._embedded['wp:featuredmedia'][0].source_url
+          res.data[0]._embedded['wp:featuredmedia'][0].source_url
         const featuredMediaAltText =
           res.data[0]._embedded['wp:featuredmedia'][0].alt_text
 
@@ -176,11 +173,11 @@ export default {
           date: new Date(res.data[0].date).toLocaleDateString(),
           content: res.data[0].content.rendered
         }
-        // this.loading = false
+        this.loading = false
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log(error)
-        // this.loading = false
+        this.loading = false
       }
     }
   }

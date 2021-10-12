@@ -67,7 +67,7 @@
             md:pt-0
           "
         >
-          <div class="w-1/4 md:w-full">
+          <div class="w-2/6 md:w-full">
             <div
               class="
                 animate-pulse
@@ -83,13 +83,13 @@
             />
           </div>
 
-          <div class="w-3/4 md:w-full">
+          <div class="w-4/6 md:w-full">
             <div
               class="
                 animate-pulse
                 bg-gray-200
                 dark:bg-gray-800
-                w-full
+                w-1/2
                 h-6
                 rounded
                 mb-3
@@ -137,7 +137,7 @@
         >
           <NuxtLink
             :to="`/read/${post.source}/${post.slug}`"
-            class="w-1/4 md:w-full"
+            class="w-2/6 md:w-full"
           >
             <img
               v-if="post.featuredMedia"
@@ -173,18 +173,32 @@
             />
           </NuxtLink>
 
-          <div class="w-3/4 md:w-full">
-            <h2 class="mb-2 text-base md:text-lg font-semibold">
-              <NuxtLink
-                :to="`/read/${post.source}/${post.slug}`"
-                class="hover:text-gray-900 dark:hover:text-gray-100"
-                v-html="post.title"
-              ></NuxtLink>
-            </h2>
-            <p
+          <div class="h-full flex flex-col w-4/6 md:w-full -my-1 md:-my-0">
+            <span
+              class="
+                text-xs
+                uppercase
+                tracking-wider
+                font-semibold
+                text-gray-400
+                dark:text-gray-500
+              "
+            >
+              {{ post.source }}
+            </span>
+            <div class="flex-1">
+              <h2 class="mb-2 text-base md:text-lg font-semibold">
+                <NuxtLink
+                  :to="`/read/${post.source}/${post.slug}`"
+                  class="hover:text-gray-900 dark:hover:text-gray-100"
+                  v-html="post.title"
+                ></NuxtLink>
+              </h2>
+            </div>
+            <!-- <p
               class="mb-3 text-sm font-normal text-gray-600 dark:text-gray-400"
               v-html="post.excerpt"
-            ></p>
+            ></p> -->
             <p
               class="
                 mb-0
@@ -206,8 +220,7 @@
                 "
                 >{{ post.author }}</a
               >
-              • {{ post.date }} |
-              {{ post.source }}
+              • {{ post.date }}
             </p>
           </div>
         </div>
