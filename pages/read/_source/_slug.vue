@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable vue/no-v-html -->
   <section>
-    <template v-if="loading">
+    <template v-if="post === null">
       <article class="flex flex-col min-h-screen">
         <div class="grid items-center grid-cols-1 md:grid-cols-2">
           <div
@@ -86,7 +86,7 @@
         </div>
       </article>
     </template>
-    <template v-else>
+    <template v-else-if="post">
       <article>
         <div class="grid items-center grid-cols-1 md:grid-cols-2">
           <div class="order-2 h-64 md:order-1 md:h-full">
@@ -146,7 +146,6 @@
 export default {
   data() {
     return {
-      loading: true,
       post: null
     }
   },
@@ -173,11 +172,9 @@ export default {
           date: new Date(res.data[0].date).toLocaleDateString(),
           content: res.data[0].content.rendered
         }
-        this.loading = false
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log(error)
-        this.loading = false
       }
     }
   }
