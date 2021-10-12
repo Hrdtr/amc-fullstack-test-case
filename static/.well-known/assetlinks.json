@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "xyz.hrdtr.amcollective_test_case.twa",
+                     "sha256_cert_fingerprints": ["C7:A5:7E:0F:83:57:E3:C8:B5:EA:25:E2:8A:06:5E:81:86:5A:0F:CF:E5:4B:2C:18:EC:30:B7:84:32:F2:EC:C0"] }
+      }
+]
